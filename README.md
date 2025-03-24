@@ -186,20 +186,28 @@ DS1307
   <img src="./images/DS1307.jpg" alt="My Monster Sprinkler">
 </div>
 
+---
+
 LCD PCF8574
 <div align="center">
   <img src="./images/lcd.jpg" alt="My Monster Sprinkler">
 </div>
+
+---
 
 XL9535
 <div align="center">
   <img src="./images/XL9535.png" alt="My Monster Sprinkler">
 </div>
 
+---
+
 Rtttl Buzzer
 <div align="center">
   <img src="./images/buzzer.jpg" alt="My Monster Sprinkler">
 </div>
+
+---
 
 Button
 <div align="center">
@@ -211,6 +219,8 @@ Button
 <div align="center">
   <h3><b>Web Server</b></h3>
 </div>
+---
+
 <div align="center">
   <img src="./images/web server.jpg" alt="My Monster Sprinkler">
 </div>
