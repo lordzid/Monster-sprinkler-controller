@@ -233,3 +233,6 @@ Learn more from *Home Assistant* community members **[GrahamS](https://community
 Check out these *Home Assistant* community discussions by **[lordzid](https://community.home-assistant.io/u/lordzid/summary)**:  
 - **[Set DS1307 Time to Specific Value](https://community.home-assistant.io/t/set-ds1307-time-to-specific-value/777711/5?u=lordzid)** — Configuring the DS1307 real-time clock.  
 - **[Simple Reliable Sprinkler Controller with ESPHome](https://community.home-assistant.io/t/simple-reliable-sprinkler-controller-with-esphome/628838?u=lordzid)** — Building a dependable sprinkler solution.
+
+
+**Tags:** `Home Assistant`, `ESPHome`
