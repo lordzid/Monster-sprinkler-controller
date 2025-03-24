@@ -1,5 +1,5 @@
 # Monster sprinkler controller
-![]([https://myoctocat.com/assets/images/base-octocat.svg](https://esphome.io/_images/sprinkler.png))
+![](https://esphome.io/_images/sprinkler.png)
 Monster sprinkler controller 
 Sprinkler Controller "Monster"
 by ZID
