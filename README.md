@@ -182,6 +182,13 @@ With *Monster*, your garden flourishes while you relax. **Autonomy**, **style**,
 ---
 ## Components
 
+ESP32-S3
+<div align="center">
+  <img src="./images/esp32s3.jpg" alt="My Monster Sprinkler">
+</div>
+
+--- 
+
 DS1307
 <div align="center">
   <img src="./images/DS1307.jpg" alt="My Monster Sprinkler">
