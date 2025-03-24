@@ -204,3 +204,8 @@ Button
 <div align="center">
   <img src="./images/membrane-switch-1x3.jpg" alt="My Monster Sprinkler">
 </div>
+
+Web Server
+<div align="center">
+  <img src="./images/web server.jpg" alt="My Monster Sprinkler">
+</div>
