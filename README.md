@@ -219,8 +219,15 @@ Button
 <div align="center">
   <h3><b>Web Server</b></h3>
 </div>
+
 ---
 
 <div align="center">
   <img src="./images/web server.jpg" alt="My Monster Sprinkler">
 </div>
+
+---
+
+Learn more from the *Home Assistant* community member **[GrahamS](https://community.home-assistant.io/u/grahams/summary)**, who contributes to such integrations.
+
+Learn more from the *Home Assistant* community member **[raythefourth](https://community.home-assistant.io/u/raythefourth/summary)**, who contributes to such integrations.
