@@ -195,3 +195,12 @@ XL9535
   <img src="./images/XL9535.png" alt="My Monster Sprinkler">
 </div>
 
+Rtttl Buzzer
+<div align="center">
+  <img src="./images/buzzer.jpg" alt="My Monster Sprinkler">
+</div>
+
+Button
+<div align="center">
+  <img src="./images/membrane-switch-1x3.jpg" alt="My Monster Sprinkler">
+</div>
