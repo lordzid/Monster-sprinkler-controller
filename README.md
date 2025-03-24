@@ -228,6 +228,6 @@ Button
 
 ---
 
-Learn more from the *Home Assistant* community member **[GrahamS](https://community.home-assistant.io/u/grahams/summary)**, who contributes to such integrations.
+Learn more from *Home Assistant* community members **[GrahamS](https://community.home-assistant.io/u/grahams/summary)** and **[raythefourth](https://community.home-assistant.io/u/raythefourth/summary)**, who contribute to such integrations.
 
-Learn more from the *Home Assistant* community member **[raythefourth](https://community.home-assistant.io/u/raythefourth/summary)**, who contributes to such integrations.
+
