@@ -1,5 +1,7 @@
 # Monster sprinkler controller
-![](https://esphome.io/_images/sprinkler.png)
+<div align="center">
+  <img src="https://esphome.io/_images/sprinkler.png" alt="Monster Sprinkler">
+</div>
 
 
 # Sprinkler Controller "Monster"  
