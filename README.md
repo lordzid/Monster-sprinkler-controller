@@ -1,6 +1,6 @@
 # Monster sprinkler controller
 ![](https://esphome.io/_images/sprinkler.png)
-<br/>Monster sprinkler controller 
+
 
 # Sprinkler Controller "Monster"  
 **by ZID**
