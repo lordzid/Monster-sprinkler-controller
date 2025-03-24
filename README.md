@@ -179,6 +179,8 @@ This lets you monitor and manage remotely, though local clocks and autonomy rema
 With *Monster*, your garden flourishes while you relax. **Autonomy**, **style**, and **smart tech** — all in one!
 
 ## Components
+
+DS1307
 <div align="center">
-  <img src="./images/my_sprinkler.png" alt="My Monster Sprinkler">
+  <img src="./images/DS1307.jpg" alt="My Monster Sprinkler">
 </div>
