@@ -178,6 +178,7 @@ This lets you monitor and manage remotely, though local clocks and autonomy rema
 *Monster* is built for independence lovers. It runs locally on your settings and clock, with a web server for monitoring and *Home Assistant*’s **"HA info"** for smart home fans. Flexible yet simple, it keeps your lawn to garden thriving effortlessly.  
 With *Monster*, your garden flourishes while you relax. **Autonomy**, **style**, and **smart tech** — all in one!
 
+---
 ## Components
 
 DS1307
@@ -204,6 +205,8 @@ Button
 <div align="center">
   <img src="./images/membrane-switch-1x3.jpg" alt="My Monster Sprinkler">
 </div>
+
+---
 
 <div align="center">
   <h3><b>Web Server</b></h3>
