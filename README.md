@@ -1,3 +1,4 @@
+**Tags:** `Home Assistant`, `ESPHome`, `Sprinkler Controller`, `Irrigation`
 # Monster sprinkler controller
 <div align="center">
   <img src="https://esphome.io/_images/sprinkler.png" alt="Monster Sprinkler">
