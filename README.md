@@ -1,6 +1,6 @@
 # Monster sprinkler controller
 ![](https://esphome.io/_images/sprinkler.png)
-Monster sprinkler controller 
+<br/>Monster sprinkler controller 
 Sprinkler Controller "Monster"
 by ZID
 Monster: Your Autonomous Smart Irrigation Assistant
