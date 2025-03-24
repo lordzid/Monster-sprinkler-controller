@@ -235,4 +235,4 @@ Check out these *Home Assistant* community discussions by **[lordzid](https://co
 - **[Simple Reliable Sprinkler Controller with ESPHome](https://community.home-assistant.io/t/simple-reliable-sprinkler-controller-with-esphome/628838?u=lordzid)** — Building a dependable sprinkler solution.
 
 
-**Tags:** `Home Assistant`, `ESPHome`
+**Tags:** `Home Assistant`, `ESPHome`, `Sprinkler Controller`
