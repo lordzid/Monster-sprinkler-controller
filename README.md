@@ -175,10 +175,66 @@ This lets you monitor and manage remotely, though local clocks and autonomy rema
 
 You can track and control irrigation using a calendar in Home Assistant.
 
-1. Create a calendar named **Irrigation Schedule**.
+1. Create a calendar named **Watering schedule**.
 2. Create an automation and paste the provided code into it.
 
 This setup allows you to manage irrigation days directly from the Home Assistant calendar interface.
+
+## Example Automation
+
+```yaml
+  - alias: Lawn Cycle Active
+    if:
+      - condition: trigger
+        id:
+          - Lawn Cycle on
+          - Lawn Cycle off
+      - condition: and
+        conditions:
+          - condition: not
+            conditions:
+              - condition: state
+                entity_id: switch.monster_lawn_cycle_active
+                state: unavailable
+    then:
+      - action: calendar.create_event
+        target:
+          entity_id: calendar.watering_schedule
+        data:
+          summary: >-
+            Lawn Cycle Active 💧🌲 {{ 'Turned ON' if
+            states('switch.monster_lawn_cycle_active') == 'on' else 'Turned OFF' }}
+          start_date_time: "{{ now() }}"
+          end_date_time: "{{ now() + timedelta(minutes=1) }}"
+        alias: Lawn Cycle Active
+
+  - alias: Garden Cycle Active
+    if:
+      - condition: trigger
+        id:
+          - Garden Cycle off
+          - Garden Cycle on
+      - condition: and
+        conditions:
+          - condition: not
+            conditions:
+              - condition: state
+                entity_id: switch.monster_garden_active
+                state: unavailable
+    then:
+      - action: calendar.create_event
+        target:
+          entity_id: calendar.watering_schedule
+        data:
+          summary: >-
+            Garden Cycle Active 💧🌲 {{ 'Turned ON' if
+            states('switch.monster_garden_active') == 'on' else 'Turned OFF' }}
+          start_date_time: "{{ now() }}"
+          end_date_time: "{{ now() + timedelta(minutes=1) }}"
+        alias: Garden Cycle Active
+
+You can extend this with additional cycles as needed.
+This approach gives a clear and visual history of watering actions on your calendar.
 
 ---
 
