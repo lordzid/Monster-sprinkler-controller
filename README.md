@@ -244,7 +244,7 @@ triggers:
     to: "off"
     enabled: true
   - trigger: state
-
+```
 
 
 You can extend this with additional cycles as needed.
