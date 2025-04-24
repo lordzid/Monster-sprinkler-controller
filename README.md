@@ -94,6 +94,7 @@ Adjust **"Brightness"** manually (`0%–100%`) or enable **"Auto Bright"** for 1
 ### Rain Delay Control  
 - **"24h Rain Delay"**: Toggle a 24-hour irrigation pause for rainy days.  
 - **"48h Rain Delay"**: Set a 48-hour delay.
+- **"ALL OFF"**: if active then schedules are not executed.
 
 ### Irrigation Schedule Setup  
 - **"Smaragd Schedule"** (*"Golden Smaragd"*):  
