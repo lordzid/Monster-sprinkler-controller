@@ -173,6 +173,13 @@ For enhanced control, *Monster* integrates with *Home Assistant*, offering **"HA
 This lets you monitor and manage remotely, though local clocks and autonomy remain the priority.
 
 
+You can track and control irrigation using a calendar in Home Assistant.
+
+1. Create a calendar named **Irrigation Schedule**.
+2. Create an automation and paste the provided code into it.
+
+This setup allows you to manage irrigation days directly from the Home Assistant calendar interface.
+
 ---
 
 ## Why Monster is Perfect  
