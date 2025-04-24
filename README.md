@@ -251,6 +251,12 @@ triggers:
 You can extend this with additional cycles as needed.
 This approach gives a clear and visual history of watering actions on your calendar.
 
+
+<div align="center">
+  <img src="./images/Screenshot_1.jpg" alt="My Monster Sprinkler">
+</div>
+
+
 ---
 
 ## Why Monster is Perfect  
