@@ -183,55 +183,69 @@ This setup allows you to manage irrigation days directly from the Home Assistant
 ## Example Automation
 
 ```yaml
-  - alias: Lawn Cycle Active
-    if:
-      - condition: trigger
-        id:
-          - Lawn Cycle on
-          - Lawn Cycle off
-      - condition: and
-        conditions:
-          - condition: not
-            conditions:
-              - condition: state
-                entity_id: switch.monster_lawn_cycle_active
-                state: unavailable
-    then:
-      - action: calendar.create_event
-        target:
-          entity_id: calendar.watering_schedule
-        data:
-          summary: >-
-            Lawn Cycle Active 💧🌲 {{ 'Turned ON' if
-            states('switch.monster_lawn_cycle_active') == 'on' else 'Turned OFF' }}
-          start_date_time: "{{ now() }}"
-          end_date_time: "{{ now() + timedelta(minutes=1) }}"
-        alias: Lawn Cycle Active
 
-  - alias: Garden Cycle Active
-    if:
-      - condition: trigger
-        id:
-          - Garden Cycle off
-          - Garden Cycle on
-      - condition: and
-        conditions:
-          - condition: not
-            conditions:
-              - condition: state
-                entity_id: switch.monster_garden_active
-                state: unavailable
-    then:
-      - action: calendar.create_event
-        target:
-          entity_id: calendar.watering_schedule
-        data:
-          summary: >-
-            Garden Cycle Active 💧🌲 {{ 'Turned ON' if
-            states('switch.monster_garden_active') == 'on' else 'Turned OFF' }}
-          start_date_time: "{{ now() }}"
-          end_date_time: "{{ now() + timedelta(minutes=1) }}"
-        alias: Garden Cycle Active
+alias: Watering record calendar
+description: ""
+triggers:
+  - trigger: time
+    at: "00:01:00"
+    id: Полночь
+  - trigger: state
+    entity_id:
+      - switch.monster_smaragd_cycle_active
+    id: Smaragd Cycle off
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+    from: "on"
+    to: "off"
+  - trigger: state
+    entity_id:
+      - switch.monster_smaragd_cycle_active
+    id: Smaragd Cycle on
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+    from: "off"
+    to: "on"
+  - trigger: state
+    entity_id:
+      - switch.monster_lawn_cycle_active
+    id: Lawn Cycle on
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+    from: "off"
+    to: "on"
+    enabled: true
+  - trigger: state
+    entity_id:
+      - switch.monster_lawn_cycle_active
+    id: Lawn Cycle off
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+    from: "on"
+    to: "off"
+    enabled: true
+  - trigger: state
+    entity_id:
+      - switch.monster_garden_active
+    id: Garden Cycle off
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+    from: "on"
+    to: "off"
+    enabled: true
+  - trigger: state
+
+
 
 You can extend this with additional cycles as needed.
 This approach gives a clear and visual history of watering actions on your calendar.
@@ -243,6 +257,7 @@ This approach gives a clear and visual history of watering actions on your calen
 With *Monster*, your garden flourishes while you relax. **Autonomy**, **style**, and **smart tech** — all in one!
 
 ---
+
 ## Components
 
 ESP32-S3
