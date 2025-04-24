@@ -245,6 +245,159 @@ triggers:
     to: "off"
     enabled: true
   - trigger: state
+    entity_id:
+      - switch.monster_garden_active
+    id: Garden Cycle on
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+    from: "off"
+    to: "on"
+    enabled: true
+conditions: []
+actions:
+  - alias: General watering for the day
+    if:
+      - condition: trigger
+        id:
+          - Полночь
+        enabled: true
+    then:
+      - variables:
+          active_schedules: >
+            {% set schedules = [] %} 
+
+            {% if is_state('switch.monster_smaragd_schedule_1', 'on') and
+            states('sensor.monster_smaragd_schedule_1_time') != 'OFF' %}
+              {% set schedules = schedules + ['Smaragd Schedule 1 Time: ' + states('sensor.monster_smaragd_schedule_1_time')] %}
+            {% endif %} 
+
+            {% if is_state('switch.monster_smaragd_schedule_2', 'on') and
+            states('sensor.monster_smaragd_schedule_2_time') != 'OFF' %}
+              {% set schedules = schedules + ['Smaragd Schedule 2 Time: ' + states('sensor.monster_smaragd_schedule_2_time')] %}
+            {% endif %} 
+
+            {% if is_state('switch.monster_smaragd_schedule_3', 'on') and
+            states('sensor.monster_smaragd_schedule_3_time') != 'OFF' %}
+              {% set schedules = schedules + ['Smaragd Schedule 3 Time: ' + states('sensor.monster_smaragd_schedule_3_time')] %}
+            {% endif %} 
+
+            {% if is_state('switch.monster_lawn_schedule_1', 'on') and
+            states('sensor.monster_lawn_schedule_1_time') != 'OFF' %}
+              {% set schedules = schedules + ['Lawn Schedule 1 Time: ' + states('sensor.monster_lawn_schedule_1_time')] %}
+            {% endif %}   
+
+            {% if is_state('switch.monster_lawn_schedule_2', 'on') and
+            states('sensor.monster_lawn_schedule_2_time') != 'OFF' %}
+              {% set schedules = schedules + ['Lawn Schedule 1 Time: ' + states('sensor.monster_lawn_schedule_2_time')] %}
+            {% endif %}   
+
+             {% if is_state('switch.monster_lawn_schedule_3', 'on') and
+            states('sensor.monster_lawn_schedule_1_time') != 'OFF' %}
+              {% set schedules = schedules + ['Lawn Schedule 3 Time: ' + states('sensor.monster_lawn_schedule_3_time')] %}
+            {% endif %}   
+
+
+            {{ schedules }}
+        enabled: true
+      - if:
+          - condition: template
+            value_template: "{{ active_schedules | length > 0 }}"
+        then:
+          - action: calendar.create_event
+            target:
+              entity_id: calendar.watering_schedule
+            data:
+              summary: Scheduled watering for today {{ now().strftime('%d.%m.%Y') }}
+              start_date_time: "{{ now().replace(hour=0, minute=1, second=0).isoformat() }}"
+              end_date_time: "{{ now().replace(hour=0, minute=2, second=0).isoformat() }}"
+              description: >-
+                Scheduled watering for today {{ now().strftime('%d.%m.%Y') }} {%
+                if active_schedules %}
+                  {% for schedule in active_schedules %}
+                    - {{ schedule }}
+                  {% endfor %}
+                {% else %}
+                  No scheduled watering for today.
+                {% endif %}
+        enabled: true
+  - alias: Smaragd Cycle Active
+    if:
+      - condition: trigger
+        id:
+          - Smaragd Cycle on
+          - Smaragd Cycle off
+      - condition: and
+        conditions:
+          - condition: not
+            conditions:
+              - condition: state
+                entity_id: switch.monster_smaragd_cycle_active
+                state: unavailable
+    then:
+      - action: calendar.create_event
+        target:
+          entity_id: calendar.watering_schedule
+        data:
+          summary: >-
+            Smaragd Cycle Active 💧🌱 {{ 'Turned ON' if
+            states('switch.monster_smaragd_cycle_active') == 'on' else 'Turned
+            OFF' }}
+          start_date_time: "{{ now() }}"
+          end_date_time: "{{ now() + timedelta(minutes=1) }}"
+        alias: Smaragd Cycle Active
+  - alias: Lawn Cycle Active
+    if:
+      - condition: trigger
+        id:
+          - Lawn Cycle on
+          - Lawn Cycle off
+      - condition: and
+        conditions:
+          - condition: not
+            conditions:
+              - condition: state
+                entity_id: switch.monster_lawn_cycle_active
+                state: unavailable
+    then:
+      - action: calendar.create_event
+        target:
+          entity_id: calendar.watering_schedule
+        data:
+          summary: >-
+            Lawn Cycle Active 💧🌲 {{ 'Turned ON' if
+            states('switch.monster_lawn_cycle_active') == 'on' else 'Turned OFF'
+            }}
+          start_date_time: "{{ now() }}"
+          end_date_time: "{{ now() + timedelta(minutes=1) }}"
+        alias: Lawn Cycle Active
+  - alias: Garden Cycle Active
+    if:
+      - condition: trigger
+        id:
+          - Garden Cycle off
+          - Garden Cycle on
+      - condition: and
+        conditions:
+          - condition: not
+            conditions:
+              - condition: state
+                entity_id: switch.monster_garden_active
+                state: unavailable
+    then:
+      - action: calendar.create_event
+        target:
+          entity_id: calendar.watering_schedule
+        data:
+          summary: >-
+            Garden Cycle Active 💧🌲 {{ 'Turned ON' if
+            states('switch.monster_garden_active') == 'on' else 'Turned OFF' }}
+          start_date_time: "{{ now() }}"
+          end_date_time: "{{ now() + timedelta(minutes=1) }}"
+        alias: Garden Cycle Active
+mode: single
+
 ```
 
 
