@@ -190,7 +190,7 @@ description: ""
 triggers:
   - trigger: time
     at: "00:01:00"
-    id: Полночь
+    id: Midnight
   - trigger: state
     entity_id:
       - switch.monster_smaragd_cycle_active
@@ -255,6 +255,28 @@ triggers:
     from: "off"
     to: "on"
     enabled: true
+  - trigger: state
+    entity_id:
+      - switch.monster_bushes_cycle_active
+    id: Bushes Cycle on
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+    from: "off"
+    to: "on"
+    enabled: true
+  - trigger: state
+    entity_id:
+      - switch.monster_bushes_cycle_active
+    id: Bushes Cycle off
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+    from: "on"
+    to: "off"
+    enabled: true
 conditions: []
 actions:
   - alias: General watering for the day
@@ -290,14 +312,44 @@ actions:
 
             {% if is_state('switch.monster_lawn_schedule_2', 'on') and
             states('sensor.monster_lawn_schedule_2_time') != 'OFF' %}
-              {% set schedules = schedules + ['Lawn Schedule 1 Time: ' + states('sensor.monster_lawn_schedule_2_time')] %}
+              {% set schedules = schedules + ['Lawn Schedule 2 Time: ' + states('sensor.monster_lawn_schedule_2_time')] %}
             {% endif %}   
 
              {% if is_state('switch.monster_lawn_schedule_3', 'on') and
-            states('sensor.monster_lawn_schedule_1_time') != 'OFF' %}
+            states('sensor.monster_lawn_schedule_3_time') != 'OFF' %}
               {% set schedules = schedules + ['Lawn Schedule 3 Time: ' + states('sensor.monster_lawn_schedule_3_time')] %}
+            {% endif %} 
+
+
+               {% if is_state('switch.monster_garden_schedule_1', 'on') and
+            states('sensor.monster_garden_schedule_1_time') != 'OFF' %}
+              {% set schedules = schedules + ['Garden Schedule 1 Time: ' + states('sensor.monster_garden_schedule_1_time')] %}
             {% endif %}   
 
+            {% if is_state('switch.monster_garden_schedule_2', 'on') and
+            states('sensor.monster_garden_schedule_2_time') != 'OFF' %}
+              {% set schedules = schedules + ['Garden Schedule 2 Time: ' + states('sensor.monster_garden_schedule_2_time')] %}
+            {% endif %}   
+
+             {% if is_state('switch.monster_garden_schedule_3', 'on') and
+            states('sensor.monster_garden_schedule_3_time') != 'OFF' %}
+              {% set schedules = schedules + ['Garden Schedule 3 Time: ' + states('sensor.monster_garden_schedule_3_time')] %}
+            {% endif %} 
+
+               {% if is_state('switch.monster_bushes_schedule_1', 'on') and
+            states('sensor.monster_bushes_schedule_1_time') != 'OFF' %}
+              {% set schedules = schedules + ['Bushes Schedule 1 Time: ' + states('sensor.monster_bushes_schedule_1_time')] %}
+            {% endif %}   
+
+            {% if is_state('switch.monster_bushes_schedule_2', 'on') and
+            states('sensor.monster_bushes_schedule_2_time') != 'OFF' %}
+              {% set schedules = schedules + ['Bushes Schedule 2 Time: ' + states('sensor.monster_bushes_schedule_2_time')] %}
+            {% endif %}   
+
+             {% if is_state('switch.monster_bushes_schedule_3', 'on') and
+            states('sensor.monster_bushes_schedule_3_time') != 'OFF' %}
+              {% set schedules = schedules + ['Bushes Schedule 3 Time: ' + states('sensor.monster_bushes_schedule_3_time')] %}
+            {% endif %} 
 
             {{ schedules }}
         enabled: true
@@ -396,6 +448,31 @@ actions:
           start_date_time: "{{ now() }}"
           end_date_time: "{{ now() + timedelta(minutes=1) }}"
         alias: Garden Cycle Active
+  - alias: Bushes Cycle Active
+    if:
+      - condition: trigger
+        id:
+          - Bushes Cycle on
+          - Bushes Cycle off
+      - condition: and
+        conditions:
+          - condition: not
+            conditions:
+              - condition: state
+                entity_id: switch.monster_bushes_cycle_active
+                state: unavailable
+    then:
+      - alias: Bushes Cycle Active
+        action: calendar.create_event
+        target:
+          entity_id: calendar.watering_schedule
+        data:
+          summary: >-
+            Bushes Cycle Active 💧🌲 {{ 'Turned ON' if
+            states('switch.monster_bushes_cycle_active') == 'on' else 'Turned
+            OFF' }}
+          start_date_time: "{{ now() }}"
+          end_date_time: "{{ now() + timedelta(minutes=1) }}"
 mode: single
 
 ```
