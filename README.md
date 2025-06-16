@@ -539,6 +539,13 @@ Button
 
 ---
 
+2 Pin Way Waterproof Electrical Wire Connector Plug
+<div align="center">
+  <img src="./images/Pin.jpg" alt="My Monster Sprinkler">
+</div>
+
+---
+
 <div align="center">
   <h3><b>Web Server</b></h3>
 </div>
