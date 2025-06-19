@@ -96,6 +96,9 @@ Adjust **"Brightness"** manually (`0%–100%`) or enable **"Auto Bright"** for 1
 - **"48h Rain Delay"**: Set a 48-hour delay.
 - **"ALL OFF"**: if active then schedules are not executed.
 
+**I have plans for a rain sensor, but I haven't figured out how to implement it reliably yet. I am not entirely satisfied with what is on the Internet.**
+
+
 ### Irrigation Schedule Setup  
 - **"Smaragd Schedule"** (*"Golden Smaragd"*):  
   - **"Schedule 1"**, **"Schedule 2"**, **"Schedule 3"**: Enable/disable and set times (**"Smaragd Schedule 1 Time"**).  
