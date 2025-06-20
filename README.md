@@ -1095,6 +1095,9 @@ Button
 </div>
 
 ---
+## What I got:
+
+---
 
 Learn more from *Home Assistant* community members **[GrahamS](https://community.home-assistant.io/u/grahams/summary)** and **[raythefourth](https://community.home-assistant.io/u/raythefourth/summary)**, who contribute to such integrations.
 
