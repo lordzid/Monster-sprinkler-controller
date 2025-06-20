@@ -1098,6 +1098,14 @@ Button
 ## What I got:
 
 ---
+<div align="center">
+  <img src="./images/box1.jpg" alt="My Monster Sprinkler">
+</div>
+---
+<div align="center">
+  <img src="./images/box2.jpg" alt="My Monster Sprinkler">
+</div>
+---
 
 Learn more from *Home Assistant* community members **[GrahamS](https://community.home-assistant.io/u/grahams/summary)** and **[raythefourth](https://community.home-assistant.io/u/raythefourth/summary)**, who contribute to such integrations.
 
