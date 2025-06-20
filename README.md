@@ -176,6 +176,13 @@ For enhanced control, *Monster* integrates with *Home Assistant*, offering **"HA
 - **"Smaragd Valve 2 Status"**: Second valve state.  
 This lets you monitor and manage remotely, though local clocks and autonomy remain the priority.
 
+---
+
+## Why Monster is Perfect  
+*Monster* is built for independence lovers. It runs locally on your settings and clock, with a web server for monitoring and *Home Assistant*’s **"HA info"** for smart home fans. Flexible yet simple, it keeps your lawn to garden thriving effortlessly.  
+With *Monster*, your garden flourishes while you relax. **Autonomy**, **style**, and **smart tech** — all in one!
+
+---
 
 ## **You can track and control irrigation using a calendar in Home Assistant**.
 
@@ -1024,14 +1031,6 @@ column_span: 2
 {% endif %}
 
 ```
-
----
-
-## Why Monster is Perfect  
-*Monster* is built for independence lovers. It runs locally on your settings and clock, with a web server for monitoring and *Home Assistant*’s **"HA info"** for smart home fans. Flexible yet simple, it keeps your lawn to garden thriving effortlessly.  
-With *Monster*, your garden flourishes while you relax. **Autonomy**, **style**, and **smart tech** — all in one!
-
----
 
 ## Components
 
