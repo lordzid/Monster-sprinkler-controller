@@ -1,6 +1,4 @@
 ##########################################################
-# RAM:   [=         ]  14.5% (used 47424 bytes from 327680 bytes)
-# Flash: [=         ]  14.6% (used 1187361 bytes from 8126464 bytes)
 # LCD light          GPIO12
 # Clock         sda: GPIO8  scl: GPIO9   
 # LSD and Relay sda: GPIO10 scl: GPIO11
