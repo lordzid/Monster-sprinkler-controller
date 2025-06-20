@@ -168,6 +168,8 @@ web_server:
 ##########################################################
 
 wifi:
+  ssid: "name"
+  password: "pass"
   enable_on_boot: False
   output_power: 10dB
   reboot_timeout: 0s
@@ -249,46 +251,6 @@ wifi:
   ap:
     ssid: "MONSTER Hotspot"
     ap_timeout: 1min
-
-  networks:
-    - ssid: "zid"
-      password: "zidnubira1"
-      bssid: 20:76:93:56:8C:36
-      #priority: 1
-      manual_ip: 
-        static_ip: 192.168.0.182
-        gateway: 192.168.0.1
-        subnet: 255.255.255.0
-      
-    - ssid: "zid"
-      password: "zidnubira1"
-      bssid: F0:B4:29:D9:4A:CC
-      #priority: 2   
-      manual_ip: 
-        static_ip: 192.168.0.182
-        gateway: 192.168.0.1
-        subnet: 255.255.255.0
-                                      
-    - ssid: "WabcoPAOffice"
-      password: "P8Zgz6SF"
-      #priority: 3       
-      # manual_ip:
-      #   static_ip: 192.168.51.197 
-      #   gateway: 192.168.51.1       
-      #   subnet: 255.255.255.0
-
-       
-    - ssid: "WabcoPA"
-      password: "P8Zgz6SF"
-      #priority: 4 
-    # #   # manual_ip:
-    # #   #   static_ip: 192.168.51.197 
-    # #   #   gateway: 192.168.51.1       
-    # #   #   subnet: 255.255.255.0
-
-    - ssid: "ESP"
-      password: "P8Zgz6SF"
-      #priority: 5
 
 ########################################################
 
