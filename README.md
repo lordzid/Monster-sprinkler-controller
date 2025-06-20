@@ -92,9 +92,9 @@ Adjust **"Brightness"** manually (`0%–100%`) or enable **"Auto Bright"** for 1
 *Monster*’s menu, accessed via **"Menu Button"**, is the core of local control, organized into handy groups:  
 
 ### Rain Delay Control  
-- **"24h Rain Delay"**: Toggle a 24-hour irrigation pause for rainy days.  
-- **"48h Rain Delay"**: Set a 48-hour delay.
-- **"ALL OFF"**: if active then schedules are not executed.
+- **"24h Rain Delay"**: Toggle a 24-hour irrigation pause for rainy days. (Hold Down button for 5s)  
+- **"48h Rain Delay"**: Set a 48-hour delay. (Hold the Up button for 5s)
+- **"ALL OFF"**: if active then schedules are not executed. (Hold Menu button for 5s)
 
 **I have plans for a rain sensor, but I haven't figured out how to implement it reliably yet. I am not entirely satisfied with what is on the Internet.**
 
