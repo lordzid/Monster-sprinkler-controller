@@ -492,6 +492,14 @@ This approach gives a clear and visual history of watering actions on your calen
 
 ---
 
+**Information panel for home assistant**
+
+<div align="center">
+  <img src="images/Panel_information_Home Assistant.jpg" alt="My Monster Sprinkler">
+</div>
+
+---
+
 ## Why Monster is Perfect  
 *Monster* is built for independence lovers. It runs locally on your settings and clock, with a web server for monitoring and *Home Assistant*’s **"HA info"** for smart home fans. Flexible yet simple, it keeps your lawn to garden thriving effortlessly.  
 With *Monster*, your garden flourishes while you relax. **Autonomy**, **style**, and **smart tech** — all in one!
