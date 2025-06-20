@@ -1,7 +1,7 @@
 **Tags:** `Home Assistant`, `ESPHome`, `Sprinkler Controller`, `Irrigation`
 # Monster sprinkler controller
 <div align="center">
-  <img src="images/monster.jpg" alt="Monster Sprinkler">
+  <img src="images/monster.jpg" alt="Monster Sprinkler" width="300" height="200">
 </div>
 
 
