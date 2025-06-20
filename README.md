@@ -968,11 +968,62 @@ column_span: 2
 ```
 ---
 
-**Information panel for home assistant**
+**Widget for phone**
 
 <div align="center">
   <img src="images/widget.jpg" alt="My Monster Sprinkler">
 </div>
+
+```yaml
+💦"MONSTER"💦 <br>
+🌱Sprinkler controller🌱 <br>
+  by ZID <br><br><br>
+
+{% set smaragd_1 = is_state('binary_sensor.monster_smaragd_valve_1_status', 'on') %}
+{% set smaragd_2 = is_state('binary_sensor.monster_smaragd_valve_2_status', 'on') %}
+{% set garden = is_state('binary_sensor.monster_garden_valve_status', 'on') %}
+{% set lawn_1 = is_state('binary_sensor.monster_lawn_valve_1_status', 'on') %}
+{% set lawn_2 = is_state('binary_sensor.monster_lawn_valve_2_status', 'on') %}
+{% set lawn_3 = is_state('binary_sensor.monster_lawn_valve_3_status', 'on') %}
+{% set bushes_1 = is_state('binary_sensor.monster_bushes_valve_1_status', 'on') %}
+{% set bushes_2 = is_state('binary_sensor.monster_bushes_valve_2_status', 'on') %}
+
+{% set has_active = smaragd_1 or smaragd_2 or garden or lawn_1 or lawn_2 or lawn_3 or bushes_1 or bushes_2 %}
+
+💧 Irrigation now:
+
+{% if has_active %}
+{% if smaragd_1 or smaragd_2 %}
+<br>
+🌳 Smaragd:
+<br>
+{% if smaragd_1 %}💧 Valve 1: on{% endif %}
+{% if smaragd_2 %}💧 Valve 2: on{% endif %}
+<br>
+⏰ Remaining time: {{ states('sensor.monster_sprinkler_remaining_time_golden_smaragd') }}
+{% endif %}
+
+{% if garden %}
+<br>
+🌸 Garden:
+<br>
+💧 Valve: on  
+<br>
+⏰ Remaining time: {{ states('sensor.monster_sprinkler_remaining_time_garden') }}
+{% endif %}
+
+{% if lawn_1 or lawn_2 or lawn_3 %}
+<br>
+🌱 Lawn:
+<br>
+{% if lawn_1 %}💧 Valve 1: on{% endif %}
+{% if lawn_2 %}💧 Valve 2: on{% endif %}
+{% if lawn_3 %}💧 Valve 3: on{% endif %}
+<br>
+⏰ Remaining time: {{ states('sensor.monster_sprinkler_remaining_time_lawn') }}
+{% endif %}
+
+```
 
 ---
 
