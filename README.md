@@ -145,7 +145,7 @@ Adjust **"Brightness"** manually (`0%–100%`) or enable **"Auto Bright"** for 1
   - **"Auto Bright"**: Auto-backlight on button press.  
   - **"Sound"**: Toggle sounds on/off.  
   - **"WIFI auto"**: Auto Wi-Fi connection.  
-  - **"WiFi ON/OFF"**: Manual Wi-Fi control.  
+  - **"WiFi ON/OFF"**: Manual Wi-Fi control.  (Press Up 3 times - turn Wi-Fi on or off)
   - **"IP: [IP Address]"**: Current IP display.  
   - **"SSID: [Connected SSID]"**: Connected network name.  
   - **"WiFi Signal: [WiFi Signal]"**: Signal strength.  
