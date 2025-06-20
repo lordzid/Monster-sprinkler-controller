@@ -4,6 +4,7 @@
   <img src="images/monster.jpg" alt="Monster Sprinkler" width="500" height="200">
 </div>
 
+[текст ссылки](https://адрес_ссылки)
 
 # Sprinkler Controller "Monster"  
 **by ZID**
