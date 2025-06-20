@@ -498,6 +498,474 @@ This approach gives a clear and visual history of watering actions on your calen
   <img src="images/Panel_information_Home Assistant.jpg" alt="My Monster Sprinkler">
 </div>
 
+```yaml
+type: grid
+cards:
+  - type: heading
+    icon: mdi:book-clock-outline
+    heading: All schedule info
+    heading_style: title
+  - type: markdown
+    content: >-
+      ---
+
+      **💧 Irrigation now:**
+
+
+      ---
+
+
+      {% set smaragd_1 =
+      is_state('binary_sensor.monster_smaragd_valve_1_status', 'on') %}
+
+      {% set smaragd_2 =
+      is_state('binary_sensor.monster_smaragd_valve_2_status', 'on') %}
+
+      {% set garden = is_state('binary_sensor.monster_garden_valve_status',
+      'on') %}
+
+      {% set lawn_1 = is_state('binary_sensor.monster_lawn_valve_1_status',
+      'on') %}
+
+      {% set lawn_2 = is_state('binary_sensor.monster_lawn_valve_2_status',
+      'on') %}
+
+      {% set lawn_3 = is_state('binary_sensor.monster_lawn_valve_3_status',
+      'on') %}
+
+      {% set bushes_1 = is_state('binary_sensor.monster_bushes_valve_1_status',
+      'on') %}
+
+      {% set bushes_2 = is_state('binary_sensor.monster_bushes_valve_2_status',
+      'on') %}
+
+
+      {% set has_active = smaragd_1 or smaragd_2 or garden or lawn_1 or lawn_2
+      or lawn_3 or bushes_1 or bushes_2 %}
+
+
+      {% if has_active %}
+
+      {% if smaragd_1 or smaragd_2 %}
+
+      🌳 **Smaragd:**
+
+      {% if smaragd_1 %}💧 Valve 1: on{% endif %}
+
+      {% if smaragd_2 %}💧 Valve 2: on{% endif %}
+
+      ⏰ Remaining time: {{
+      states('sensor.monster_sprinkler_remaining_time_golden_smaragd') }}
+
+      {% endif %}
+
+
+      {% if garden %}
+
+      🌸 **Garden:**
+
+      💧 Valve: on  
+
+      ⏰ Remaining time: {{
+      states('sensor.monster_sprinkler_remaining_time_garden') }}
+
+      {% endif %}
+
+
+      {% if lawn_1 or lawn_2 or lawn_3 %}
+
+      🌱 **Lawn:**
+
+      {% if lawn_1 %}💧 Valve 1: on{% endif %}
+
+      {% if lawn_2 %}💧 Valve 2: on{% endif %}
+
+      {% if lawn_3 %}💧 Valve 3: on{% endif %}
+
+      ⏰ Remaining time: {{
+      states('sensor.monster_sprinkler_remaining_time_lawn') }}
+
+      {% endif %}
+
+
+      {% if bushes_1 or bushes_2 %}
+
+      🌿 **Bushes:**
+
+      {% if bushes_1 %}💧 Valve 1: on{% endif %}
+
+      {% if bushes_2 %}💧 Valve 2: on{% endif %}
+
+      ⏰ Remaining time: {{
+      states('sensor.monster_sprinkler_remaining_time_bushes') }}
+
+      {% endif %}
+
+
+      {% else %}
+
+      ⏳ **No active irrigation**
+
+      {% endif %}
+    grid_options:
+      columns: full
+  - type: markdown
+    content: |+
+      ---
+      **🌲Smaragd🌲**
+
+      ---
+
+      {% set s1 = states('sensor.monster_smaragd_schedule_1_time') %}
+      {% set s2 = states('sensor.monster_smaragd_schedule_2_time') %}
+      {% set s3 = states('sensor.monster_smaragd_schedule_3_time') %}
+      {% set days = states('sensor.monster_smaragd_days_status') %}
+
+      {% set no_days = days == 'No days' %}
+      {% set no_schedule = s1 == 'OFF' and s2 == 'OFF' and s3 == 'OFF' %}
+
+      {% if no_days or no_schedule %}
+      🚫 **No watering schedule**
+      {% else %}
+      🗓️ **Days Status:** {{ days }}
+
+      💧 **Watering Schedule:**
+      {% if s1 != 'OFF' %}- ⏱️ Schedule 1: {{ s1 }}{% endif %}
+      {% if s2 != 'OFF' %}- ⏱️ Schedule 2: {{ s2 }}{% endif %}
+      {% if s3 != 'OFF' %}- ⏱️ Schedule 3: {{ s3 }}{% endif %}
+      {% endif %}
+
+
+
+
+
+
+
+  - type: markdown
+    content: |+
+      ---
+      **🌱Lawn🌱**
+
+      ---
+
+      {% set s1 = states('sensor.monster_lawn_schedule_1_time') %}
+      {% set s2 = states('sensor.monster_lawn_schedule_2_time') %}
+      {% set s3 = states('sensor.monster_lawn_schedule_3_time') %}
+      {% set days = states('sensor.monster_lawn_days_status') %}
+
+      {% set no_days = days == 'No days' %}
+      {% set no_schedule = s1 == 'OFF' and s2 == 'OFF' and s3 == 'OFF' %}
+
+      {% if no_days or no_schedule %}
+      🚫 **No watering schedule**
+      {% else %}
+      🗓️ **Days Status:** {{ days }}
+
+      💧 **Watering Schedule:**
+      {% if s1 != 'OFF' %}- ⏱️ Schedule 1: {{ s1 }}{% endif %}
+      {% if s2 != 'OFF' %}- ⏱️ Schedule 2: {{ s2 }}{% endif %}
+      {% if s3 != 'OFF' %}- ⏱️ Schedule 3: {{ s3 }}{% endif %}
+      {% endif %}
+
+
+  - type: markdown
+    content: |
+      ---
+      **🌿Bushes🌿**
+
+      ---
+
+      {% set s1 = states('sensor.monster_bushes_schedule_1_time') %}
+      {% set s2 = states('sensor.monster_bushes_schedule_2_time') %}
+      {% set s3 = states('sensor.monster_bushes_schedule_3_time') %}
+      {% set days = states('sensor.monster_bushes_days_status') %}
+
+      {% set no_days = days == 'No days' %}
+      {% set no_schedule = s1 == 'OFF' and s2 == 'OFF' and s3 == 'OFF' %}
+
+      {% if no_days or no_schedule %}
+      🚫 **No watering schedule**
+      {% else %}
+      🗓️ **Days Status:** {{ days }}
+
+      💧 **Watering Schedule:**
+      {% if s1 != 'OFF' %}- ⏱️ Schedule 1: {{ s1 }}{% endif %}
+      {% if s2 != 'OFF' %}- ⏱️ Schedule 2: {{ s2 }}{% endif %}
+      {% if s3 != 'OFF' %}- ⏱️ Schedule 3: {{ s3 }}{% endif %}
+      {% endif %}
+  - type: markdown
+    content: |
+      ---
+      **🌳Garden🌳**
+
+      ---
+
+      {% set s1 = states('sensor.monster_garden_schedule_1_time') %}
+      {% set s2 = states('sensor.monster_garden_schedule_2_time') %}
+      {% set s3 = states('sensor.monster_garden_schedule_3_time') %}
+      {% set days = states('sensor.monster_garden_days_status') %}
+
+      {% set no_days = days == 'No days' %}
+      {% set no_schedule = s1 == 'OFF' and s2 == 'OFF' and s3 == 'OFF' %}
+
+      {% if no_days or no_schedule %}
+      🚫 **No watering schedule**
+      {% else %}
+      🗓️ **Days Status:** {{ days }}
+
+      💧 **Watering Schedule:**
+      {% if s1 != 'OFF' %}- ⏱️ Schedule 1: {{ s1 }}{% endif %}
+      {% if s2 != 'OFF' %}- ⏱️ Schedule 2: {{ s2 }}{% endif %}
+      {% if s3 != 'OFF' %}- ⏱️ Schedule 3: {{ s3 }}{% endif %}
+      {% endif %}
+    visibility:
+      - condition: or
+        conditions:
+          - condition: state
+            entity: switch.monster_garden_schedule_1
+            state: "on"
+          - condition: state
+            entity: switch.monster_garden_schedule_2
+            state: "on"
+          - condition: state
+            entity: switch.monster_garden_schedule_3
+            state: "on"
+column_span: 2
+type: grid
+cards:
+  - type: heading
+    icon: mdi:book-clock-outline
+    heading: All schedule info
+    heading_style: title
+  - type: markdown
+    content: >-
+      ---
+
+      **💧 Irrigation now:**
+
+
+      ---
+
+
+      {% set smaragd_1 =
+      is_state('binary_sensor.monster_smaragd_valve_1_status', 'on') %}
+
+      {% set smaragd_2 =
+      is_state('binary_sensor.monster_smaragd_valve_2_status', 'on') %}
+
+      {% set garden = is_state('binary_sensor.monster_garden_valve_status',
+      'on') %}
+
+      {% set lawn_1 = is_state('binary_sensor.monster_lawn_valve_1_status',
+      'on') %}
+
+      {% set lawn_2 = is_state('binary_sensor.monster_lawn_valve_2_status',
+      'on') %}
+
+      {% set lawn_3 = is_state('binary_sensor.monster_lawn_valve_3_status',
+      'on') %}
+
+      {% set bushes_1 = is_state('binary_sensor.monster_bushes_valve_1_status',
+      'on') %}
+
+      {% set bushes_2 = is_state('binary_sensor.monster_bushes_valve_2_status',
+      'on') %}
+
+
+      {% set has_active = smaragd_1 or smaragd_2 or garden or lawn_1 or lawn_2
+      or lawn_3 or bushes_1 or bushes_2 %}
+
+
+      {% if has_active %}
+
+      {% if smaragd_1 or smaragd_2 %}
+
+      🌳 **Smaragd:**
+
+      {% if smaragd_1 %}💧 Valve 1: on{% endif %}
+
+      {% if smaragd_2 %}💧 Valve 2: on{% endif %}
+
+      ⏰ Remaining time: {{
+      states('sensor.monster_sprinkler_remaining_time_golden_smaragd') }}
+
+      {% endif %}
+
+
+      {% if garden %}
+
+      🌸 **Garden:**
+
+      💧 Valve: on  
+
+      ⏰ Remaining time: {{
+      states('sensor.monster_sprinkler_remaining_time_garden') }}
+
+      {% endif %}
+
+
+      {% if lawn_1 or lawn_2 or lawn_3 %}
+
+      🌱 **Lawn:**
+
+      {% if lawn_1 %}💧 Valve 1: on{% endif %}
+
+      {% if lawn_2 %}💧 Valve 2: on{% endif %}
+
+      {% if lawn_3 %}💧 Valve 3: on{% endif %}
+
+      ⏰ Remaining time: {{
+      states('sensor.monster_sprinkler_remaining_time_lawn') }}
+
+      {% endif %}
+
+
+      {% if bushes_1 or bushes_2 %}
+
+      🌿 **Bushes:**
+
+      {% if bushes_1 %}💧 Valve 1: on{% endif %}
+
+      {% if bushes_2 %}💧 Valve 2: on{% endif %}
+
+      ⏰ Remaining time: {{
+      states('sensor.monster_sprinkler_remaining_time_bushes') }}
+
+      {% endif %}
+
+
+      {% else %}
+
+      ⏳ **No active irrigation**
+
+      {% endif %}
+    grid_options:
+      columns: full
+  - type: markdown
+    content: |+
+      ---
+      **🌲Smaragd🌲**
+
+      ---
+
+      {% set s1 = states('sensor.monster_smaragd_schedule_1_time') %}
+      {% set s2 = states('sensor.monster_smaragd_schedule_2_time') %}
+      {% set s3 = states('sensor.monster_smaragd_schedule_3_time') %}
+      {% set days = states('sensor.monster_smaragd_days_status') %}
+
+      {% set no_days = days == 'No days' %}
+      {% set no_schedule = s1 == 'OFF' and s2 == 'OFF' and s3 == 'OFF' %}
+
+      {% if no_days or no_schedule %}
+      🚫 **No watering schedule**
+      {% else %}
+      🗓️ **Days Status:** {{ days }}
+
+      💧 **Watering Schedule:**
+      {% if s1 != 'OFF' %}- ⏱️ Schedule 1: {{ s1 }}{% endif %}
+      {% if s2 != 'OFF' %}- ⏱️ Schedule 2: {{ s2 }}{% endif %}
+      {% if s3 != 'OFF' %}- ⏱️ Schedule 3: {{ s3 }}{% endif %}
+      {% endif %}
+
+
+
+
+
+
+
+  - type: markdown
+    content: |+
+      ---
+      **🌱Lawn🌱**
+
+      ---
+
+      {% set s1 = states('sensor.monster_lawn_schedule_1_time') %}
+      {% set s2 = states('sensor.monster_lawn_schedule_2_time') %}
+      {% set s3 = states('sensor.monster_lawn_schedule_3_time') %}
+      {% set days = states('sensor.monster_lawn_days_status') %}
+
+      {% set no_days = days == 'No days' %}
+      {% set no_schedule = s1 == 'OFF' and s2 == 'OFF' and s3 == 'OFF' %}
+
+      {% if no_days or no_schedule %}
+      🚫 **No watering schedule**
+      {% else %}
+      🗓️ **Days Status:** {{ days }}
+
+      💧 **Watering Schedule:**
+      {% if s1 != 'OFF' %}- ⏱️ Schedule 1: {{ s1 }}{% endif %}
+      {% if s2 != 'OFF' %}- ⏱️ Schedule 2: {{ s2 }}{% endif %}
+      {% if s3 != 'OFF' %}- ⏱️ Schedule 3: {{ s3 }}{% endif %}
+      {% endif %}
+
+
+  - type: markdown
+    content: |
+      ---
+      **🌿Bushes🌿**
+
+      ---
+
+      {% set s1 = states('sensor.monster_bushes_schedule_1_time') %}
+      {% set s2 = states('sensor.monster_bushes_schedule_2_time') %}
+      {% set s3 = states('sensor.monster_bushes_schedule_3_time') %}
+      {% set days = states('sensor.monster_bushes_days_status') %}
+
+      {% set no_days = days == 'No days' %}
+      {% set no_schedule = s1 == 'OFF' and s2 == 'OFF' and s3 == 'OFF' %}
+
+      {% if no_days or no_schedule %}
+      🚫 **No watering schedule**
+      {% else %}
+      🗓️ **Days Status:** {{ days }}
+
+      💧 **Watering Schedule:**
+      {% if s1 != 'OFF' %}- ⏱️ Schedule 1: {{ s1 }}{% endif %}
+      {% if s2 != 'OFF' %}- ⏱️ Schedule 2: {{ s2 }}{% endif %}
+      {% if s3 != 'OFF' %}- ⏱️ Schedule 3: {{ s3 }}{% endif %}
+      {% endif %}
+  - type: markdown
+    content: |
+      ---
+      **🌳Garden🌳**
+
+      ---
+
+      {% set s1 = states('sensor.monster_garden_schedule_1_time') %}
+      {% set s2 = states('sensor.monster_garden_schedule_2_time') %}
+      {% set s3 = states('sensor.monster_garden_schedule_3_time') %}
+      {% set days = states('sensor.monster_garden_days_status') %}
+
+      {% set no_days = days == 'No days' %}
+      {% set no_schedule = s1 == 'OFF' and s2 == 'OFF' and s3 == 'OFF' %}
+
+      {% if no_days or no_schedule %}
+      🚫 **No watering schedule**
+      {% else %}
+      🗓️ **Days Status:** {{ days }}
+
+      💧 **Watering Schedule:**
+      {% if s1 != 'OFF' %}- ⏱️ Schedule 1: {{ s1 }}{% endif %}
+      {% if s2 != 'OFF' %}- ⏱️ Schedule 2: {{ s2 }}{% endif %}
+      {% if s3 != 'OFF' %}- ⏱️ Schedule 3: {{ s3 }}{% endif %}
+      {% endif %}
+    visibility:
+      - condition: or
+        conditions:
+          - condition: state
+            entity: switch.monster_garden_schedule_1
+            state: "on"
+          - condition: state
+            entity: switch.monster_garden_schedule_2
+            state: "on"
+          - condition: state
+            entity: switch.monster_garden_schedule_3
+            state: "on"
+column_span: 2
+
+
+```
 ---
 
 ## Why Monster is Perfect  
