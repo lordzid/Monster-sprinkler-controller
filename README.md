@@ -1,6 +1,7 @@
 **Tags:** `Home Assistant`, `ESPHome`, `Sprinkler Controller`, `Irrigation`
 
-# [текст ссылки](https://адрес_ссылки)
+# [Youtube video 1](https://адрес_ссылки)
+# [Youtube video 2](https://адрес_ссылки)
 
 # Monster sprinkler controller
 <div align="center">
