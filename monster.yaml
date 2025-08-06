@@ -168,8 +168,6 @@ web_server:
 ##########################################################
 
 wifi:
-  ssid: "name"
-  password: "pass"
   enable_on_boot: False
   output_power: 10dB
   reboot_timeout: 0s
@@ -252,6 +250,45 @@ wifi:
     ssid: "MONSTER Hotspot"
     ap_timeout: 1min
 
+  networks:
+    - ssid: 
+      password: 
+      #priority: 1
+      manual_ip: 
+        static_ip: 192.168.0.182
+        gateway: 192.168.0.1
+        subnet: 255.255.255.0
+      
+    - ssid: 
+      password: 
+      bssid: 
+      #priority: 2   
+      manual_ip: 
+        static_ip: 192.168.0.182
+        gateway: 192.168.0.1
+        subnet: 255.255.255.0
+                                      
+    - ssid: 
+      password: 
+      #priority: 3       
+      # manual_ip:
+      #   static_ip: 192.168.51.197 
+      #   gateway: 192.168.51.1       
+      #   subnet: 255.255.255.0
+
+       
+    - ssid: "WabcoPA"
+      password: "P8Zgz6SF"
+      #priority: 4 
+    # #   # manual_ip:
+    # #   #   static_ip: 192.168.51.197 
+    # #   #   gateway: 192.168.51.1       
+    # #   #   subnet: 255.255.255.0
+
+    - ssid: "ESP"
+      password: "P8Zgz6SF"
+      #priority: 5
+
 ########################################################
 
 api:
@@ -291,7 +328,9 @@ api:
 ########################################################
 
 ota:
-  platform: esphome
+  - platform: esphome
+  - platform: web_server
+    
 
 ########################################################
  
@@ -3211,7 +3250,7 @@ light:
     rgb_order: GRB
     pin: GPIO48
     num_leds: 1
-    rmt_channel: 0
+    #rmt_channel: 0
     chipset: ws2812
     icon: "mdi:wall-sconce-flat-variant"
     name: "ESP Light"
@@ -4689,7 +4728,7 @@ sensor:
   - platform: template
     name: "Flash"
     lambda: |-
-      size_t total = spi_flash_get_chip_size();
+      size_t total = ESP.getFlashChipSize();
       size_t used = total - ESP.getFreeSketchSpace();
       return int((used * 100) / total);
     update_interval: 60s
